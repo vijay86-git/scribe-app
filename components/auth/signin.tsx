@@ -41,7 +41,7 @@ export function SignInForm({
     setIsSubmitting(true);
 
     try {
-          const res = await login(formData);
+          //const res = await login(formData);
           const res: any = await fetch('/api/login', {
                           method: 'POST',
                           headers: {
