@@ -55,29 +55,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-const ChartTooltipContent: React.FC<CustomTooltipProps> = ({
-  active,
-  payload,
-  className,
-  indicator = "dot",
-  hideLabel = false,
-}) => {
-  if (!active || !payload) return null;
-
-  // Your custom tooltip logic here
-  return (
-    <div className={className}>
-      {payload.map((entry, index) => (
-        <div key={index}>
-          <strong>{entry.name}: </strong>{entry.value}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-
-
 export default function Page() {
 
   return (
@@ -159,10 +136,6 @@ export default function Page() {
                             axisLine={false}
                             tickFormatter={(value) => '1'}
                           />
-                          <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent hideLabel />}
-                          />
                           <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
                             <LabelList
                               position="top"
@@ -201,10 +174,6 @@ export default function Page() {
                             tickMargin={10}
                             axisLine={false}
                             tickFormatter={(value) => '1' }
-                          />
-                          <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent hideLabel />}
                           />
                           <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
                             <LabelList
