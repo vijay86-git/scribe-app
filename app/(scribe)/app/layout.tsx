@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link";
+import Image from "next/image";
 import {
   FileText,
   Upload,
@@ -16,9 +17,9 @@ export default function AppLayout({
 			   <div className="mr-2 border-1 rounded-md rounded-sm md:block m-10px">
 			      <div className="flex h-full max-h-screen flex-col gap-2 shadow-xl">
 			         <div className="flex h-14 items-center justify-center px-4 lg:h-[60px] lg:px-6">
-			            <a className="flex items-center justify-center font-semibold" href="/">
-			            <img src="https://adgscribe.companydemo.ca/assets/img/logo.png" className="w-3/4 object-contain" />
-			            </a>
+			            <Link className="flex items-center justify-center font-semibold" href="/">
+			            		<Image src={'/images//logo.png'} className="w-3/4 object-contain" />
+			            </Link>
 			         </div>
 			         <div className="flex-1">
 			            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
