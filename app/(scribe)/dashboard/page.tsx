@@ -135,7 +135,7 @@ export default function Page() {
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
-                            tickFormatter={(value) => format(parseISO(value), 'd MMM')}
+                            tickFormatter={(value) => 1}
                           />
                           <ChartTooltip
                             cursor={false}
@@ -179,7 +179,7 @@ export default function Page() {
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
-                            tickFormatter={(value) => format(parseISO(value), 'MMM d')}
+                            tickFormatter={(value) => 1 }
                           />
                           <ChartTooltip
                             cursor={false}
