@@ -73,9 +73,16 @@ export function SignInForm({
 		          } else {
 		             setServerMessage(data.msg);
 		          }
-		    } catch (err) {
+		    } catch (err: unknown) {
 		    	setIsSubmitting(false);
-		        setServerMessage('something went wrong');
+		    	const e = err.message;
+
+		    	if (typeof e === "string") {
+			        setServerMessage(e.toUpperCase());// // works, `e` narrowed to string
+			    } else if (e instanceof Error) {
+			        setServerMessage(e.message); // works, `e` narrowed to Error
+			    }
+
 		    }
     }
 
