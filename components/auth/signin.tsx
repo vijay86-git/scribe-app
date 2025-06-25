@@ -19,11 +19,13 @@ export function SignInForm({
 
   const router = useRouter();
 
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: ""
-  });
+  // const [formData, setFormData] = useState<FormData>({
+  //   email: "",
+  //   password: ""
+  // });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverMessage, setServerMessage] = useState('');
 
   const validateForm = (data: FormData): FormErrors => {
     try {
@@ -40,8 +42,7 @@ export function SignInForm({
 
   //const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   //const [status, setStatus] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [serverMessage, setServerMessage] = useState('');
+  
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -53,11 +54,11 @@ export function SignInForm({
       password: form.password.value,
     };
 
-
     const newErrors = validateForm(formData);
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
           try {
+          		  setIsSubmitting(true);
 		          //	const res = await login(formData);
 		          const res = await fetch('/api/login', {
 		                          method: 'POST',
@@ -73,6 +74,7 @@ export function SignInForm({
 		             setServerMessage(res.msg);
 		          }
 		    } catch (err) {
+		    	setIsSubmitting(false);
 		        setServerMessage(err);
 		    }
     }
