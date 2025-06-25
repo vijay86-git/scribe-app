@@ -60,7 +60,7 @@ export function SignInForm({
           try {
           		  setIsSubmitting(true);
 		          //	const res = await login(formData);
-		          const res: any = await fetch('/api/login', {
+		          const res = await fetch('/api/login', {
 		                          method: 'POST',
 		                          headers: {
 		                            'Content-Type': 'application/json',
