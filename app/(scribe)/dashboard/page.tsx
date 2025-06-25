@@ -23,9 +23,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-
 import { Scroll, NotebookPen, Users, TrendingUp } from "lucide-react";
- 
 
 export default function Page() {
 
