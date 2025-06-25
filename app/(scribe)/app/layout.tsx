@@ -18,7 +18,7 @@ export default function AppLayout({
 			      <div className="flex h-full max-h-screen flex-col gap-2 shadow-xl">
 			         <div className="flex h-14 items-center justify-center px-4 lg:h-[60px] lg:px-6">
 			            <Link className="flex items-center justify-center font-semibold" href="/">
-			            		<Image src={'/images//logo.png'} className="w-3/4 object-contain" />
+			            		<Image src={'/images//logo.png'} className="w-3/4 object-contain" alt="" />
 			            </Link>
 			         </div>
 			         <div className="flex-1">
