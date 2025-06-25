@@ -22,38 +22,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-} from "@/components/ui/chart"
 
 
 import { Scroll, NotebookPen, Users, TrendingUp } from "lucide-react";
  
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-import { format, parseISO } from 'date-fns';
-
-const chartData = [
-  { date: "2025-06-14", desktop: 186 },
-  { date: "2025-06-15", desktop: 305 },
-  { date: "2025-06-16", desktop: 237 },
-  { date: "2025-06-17", desktop: 73 },
-  { date: "2025-06-18", desktop: 209 },
-  { date: "2025-06-19", desktop: 224 },
-  { date: "2025-06-20", desktop: 134 },
-  { date: "2025-06-21", desktop: 144 },
-  { date: "2025-06-22", desktop: 184 },
-  { date: "2025-06-23", desktop: 154 },
-]
-
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig
 
 export default function Page() {
 
@@ -120,32 +92,7 @@ export default function Page() {
                   
                   <Card>
                     <CardContent>
-                      <ChartContainer config={chartConfig}>
-                        <BarChart
-                          accessibilityLayer
-                          data={chartData}
-                          margin={{
-                            top: 20,
-                          }}
-                        >
-                          <CartesianGrid vertical={false} />
-                          <XAxis
-                            dataKey="date"
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                            tickFormatter={(value) => '1'}
-                          />
-                          <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
-                            <LabelList
-                              position="top"
-                              offset={12}
-                              className="fill-foreground"
-                              fontSize={12}
-                            />
-                          </Bar>
-                        </BarChart>
-                      </ChartContainer>
+                      11
                     </CardContent>
                   </Card>
 
@@ -159,33 +106,8 @@ export default function Page() {
                   
                   <Card>
                     <CardContent>
-                      <ChartContainer config={chartConfig}>
-                        <BarChart
-                          accessibilityLayer
-                          data={chartData}
-                          margin={{
-                            top: 20,
-                          }}
-                        >
-                          <CartesianGrid vertical={false} />
-                          <XAxis
-                            dataKey="date"
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                            tickFormatter={(value) => '1' }
-                          />
-                          <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
-                            <LabelList
-                              position="top"
-                              offset={12}
-                              className="fill-foreground"
-                              fontSize={12}
-                              
-                            />
-                          </Bar>
-                        </BarChart>
-                      </ChartContainer>
+                      
+                      12
                     </CardContent>
                   </Card>
 
