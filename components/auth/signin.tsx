@@ -75,12 +75,12 @@ export function SignInForm({
 		          }
 		    } catch (err: unknown) {
 		    	setIsSubmitting(false);
-		    	const e = err.message;
+		    	//const e = err.message;
 
-		    	if (typeof e === "string") {
-			        setServerMessage(e.toUpperCase());// // works, `e` narrowed to string
+		    	if (err instanceof Error) {
+			        setServerMessage(err.message);// // works, `e` narrowed to string
 			    } else if (e instanceof Error) {
-			        setServerMessage(e.message); // works, `e` narrowed to Error
+			        setServerMessage('something went wrong'); // works, `e` narrowed to Error
 			    }
 
 		    }
