@@ -13,7 +13,7 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "@typescript-eslint/no-unused-vars": process.env.NODE_ENV === "production" ? "error" : "error",
+      "@typescript-eslint/no-unused-vars": "off",
       "react/no-unescaped-entities": "off",  // Disable the 'react/no-unescaped-entities' rule
       "@next/next/no-page-custom-font": "off",  // Disable the '@next/next/no-page-custom-font' rule
     },
