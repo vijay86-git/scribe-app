@@ -32,7 +32,14 @@ export function SignInForm({
     const result = loginSchema.safeParse(formData);
 
     if ( ! result.success) {
-      setErrors(result.error.flatten().fieldErrors);
+      //setErrors(result.error.flatten().fieldErrors);
+
+    	const newErrors: Partial<Record<string, string>> = result.error.errors.reduce((acc, error) => {
+        	acc[error.path[0] as string] = error.message; // Store the error message by the field name
+        	return acc;
+      }, {});
+    	setErrors(newErrors);
+
       return;
     }
 
