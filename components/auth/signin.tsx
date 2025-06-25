@@ -13,7 +13,7 @@ export function SignInForm({
   ...props
 }: React.ComponentProps<"div">) {
 
-  //const router = useRouter();
+  const router = useRouter();
 
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [status, setStatus] = useState('');
