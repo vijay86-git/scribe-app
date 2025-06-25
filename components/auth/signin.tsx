@@ -56,7 +56,7 @@ export function SignInForm({
              setServerMessage(res.msg);
           }
     } catch (err) {
-        setServerMessage('Something went wrong!');
+        setServerMessage(err);
     }
  }
 
