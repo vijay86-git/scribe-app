@@ -1,14 +1,109 @@
 'use client'
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { cn } from "@/lib/utils"
+import { z } from "zod";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { loginFormSchema } from '@/schemas/login-schema'
+
+type FormData = z.infer<typeof loginFormSchema>;
+type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
 export function SignInForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+
+  const router = useRouter();
+
+  const [formData, setFormData] = useState<FormData>({
+    email: "",
+    password: ""
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (data: FormData): FormErrors => {
+    try {
+      loginFormSchema.parse(data);
+      return {};
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return error.flatten().fieldErrors;
+      }
+      return {};
+    }
+  };
+
+
+  //const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
+  //const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverMessage, setServerMessage] = useState('');
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+
+    const formData = {
+      email: form.email.value,
+      password: form.password.value,
+    };
+
+
+    const newErrors = validateForm(formData);
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length === 0) {
+          try {
+		          //	const res = await login(formData);
+		          const res = await fetch('/api/login', {
+		                          method: 'POST',
+		                          headers: {
+		                            'Content-Type': 'application/json',
+		                          },
+		                          body: JSON.stringify(formData),
+		                        });
+		          const data = await res.json();
+		          if (data.success) {
+		             router.push('/dashboard');
+		          } else {
+		             setServerMessage(res.msg);
+		          }
+		    } catch (err) {
+		        setServerMessage(err);
+		    }
+    }
+
+
+    // const form = e.target as HTMLFormElement;
+    // const formData = {
+    //   email: form.email.value,
+    //   password: form.password.value,
+    // };
+
+    // const result = loginFormSchema.safeParse(formData);
+
+    // if ( ! result.success) {
+    //   //setErrors(result.error.flatten().fieldErrors);
+
+    // 	const newErrors: Partial<Record<string, string>> = result.error.errors.reduce((acc, error) => {
+    //     	acc[error.path[0] as string] = error.message; // Store the error message by the field name
+    //     	return acc;
+    //   }, {});
+
+
+    //   return;
+    // }
+
+    // setErrors({});
+
+    // setIsSubmitting(true);
+
+
+ }
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -20,8 +115,9 @@ export function SignInForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex flex-col gap-6">
+              {serverMessage && <p className="text-red-500 text-xs">{serverMessage}</p>}
 
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -31,9 +127,9 @@ export function SignInForm({
                   placeholder=""
                   name="email"
                   defaultValue="vijay.singh@adgonline.in"
-
+                  disabled={isSubmitting}
                 />
-
+                {errors.email && <p className="text-red-500 text-xs">{errors.email[0]}</p>}
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
@@ -45,11 +141,11 @@ export function SignInForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" name="password" defaultValue="12345678" />
-
+                <Input id="password" type="password" name="password" disabled={isSubmitting} defaultValue="12345678" />
+                {errors.password && <p className="text-red-500 text-xs">{errors.password[0]}</p>}
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className={`w-full`}>
+                <Button type="submit" className={`w-full ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
                   Let's get started
                 </Button>
                 <Button variant="outline" className="w-full">
