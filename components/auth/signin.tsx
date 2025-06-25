@@ -71,7 +71,7 @@ export function SignInForm({
 		          if (data.success) {
 		             router.push('/dashboard');
 		          } else {
-		             setServerMessage(res?.msg);
+		             setServerMessage(data.msg);
 		          }
 		    } catch (err) {
 		    	setIsSubmitting(false);
