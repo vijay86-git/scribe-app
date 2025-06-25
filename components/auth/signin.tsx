@@ -13,7 +13,7 @@ export function SignInForm({
   ...props
 }: React.ComponentProps<"div">) {
 
-  const router = useRouter();
+  //const router = useRouter();
 
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [status, setStatus] = useState('');
@@ -41,22 +41,22 @@ export function SignInForm({
     setIsSubmitting(true);
 
     try {
-          //const res = await login(formData);
-          // const res: any = await fetch('/api/login', {
-          //                 method: 'POST',
-          //                 headers: {
-          //                   'Content-Type': 'application/json',
-          //                 },
-          //                 body: JSON.stringify(formData),
-          //               });
-          // const data = await res.json();
-          // if (data.success) {
-          //    router.push('/dashboard');
-          // } else {
-          //    setServerMessage(res.msg);
-          // }
+          const res = await login(formData);
+          const res: any = await fetch('/api/login', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify(formData),
+                        });
+          const data = await res.json();
+          if (data.success) {
+             router.push('/dashboard');
+          } else {
+             setServerMessage(res.msg);
+          }
     } catch (err: any) {
-          //setServerMessage('Something went wrong!');
+        setServerMessage('Something went wrong!');
     }
  }
 
