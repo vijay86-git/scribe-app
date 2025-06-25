@@ -22,11 +22,61 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+} from "@/components/ui/chart"
 
 
 import { Scroll, NotebookPen, Users, TrendingUp } from "lucide-react";
  
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
+
+import { format, parseISO } from 'date-fns';
+
+const chartData = [
+  { date: "2025-06-14", desktop: 186 },
+  { date: "2025-06-15", desktop: 305 },
+  { date: "2025-06-16", desktop: 237 },
+  { date: "2025-06-17", desktop: 73 },
+  { date: "2025-06-18", desktop: 209 },
+  { date: "2025-06-19", desktop: 224 },
+  { date: "2025-06-20", desktop: 134 },
+  { date: "2025-06-21", desktop: 144 },
+  { date: "2025-06-22", desktop: 184 },
+  { date: "2025-06-23", desktop: 154 },
+]
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig
+
+const ChartTooltipContent: React.FC<CustomTooltipProps> = ({
+  active,
+  payload,
+  className,
+  indicator = "dot",
+  hideLabel = false,
+}) => {
+  if (!active || !payload) return null;
+
+  // Your custom tooltip logic here
+  return (
+    <div className={className}>
+      {payload.map((entry, index) => (
+        <div key={index}>
+          <strong>{entry.name}: </strong>{entry.value}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+
 
 export default function Page() {
 
@@ -67,7 +117,7 @@ export default function Page() {
                 <div className="bg-white p-4 border-1 rounded-lg shadow flex items-center justify-between">
                   <div>
                     <p className="text-gray-600 text-sm mb-2 font-bold">Total Notes</p>
-                    <p className="text-3xl font-semibold text-yellow-600">12</p>
+                    <p className="text-3xl font-semibold text-yellow-600">121</p>
                   </div>
                   <NotebookPen className="" size={28} color="#333" />
                 </div>
@@ -93,7 +143,36 @@ export default function Page() {
                   
                   <Card>
                     <CardContent>
-                      2
+                      <ChartContainer config={chartConfig}>
+                        <BarChart
+                          accessibilityLayer
+                          data={chartData}
+                          margin={{
+                            top: 20,
+                          }}
+                        >
+                          <CartesianGrid vertical={false} />
+                          <XAxis
+                            dataKey="date"
+                            tickLine={false}
+                            tickMargin={10}
+                            axisLine={false}
+                            tickFormatter={(value) => '1'}
+                          />
+                          <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
+                            <LabelList
+                              position="top"
+                              offset={12}
+                              className="fill-foreground"
+                              fontSize={12}
+                            />
+                          </Bar>
+                        </BarChart>
+                      </ChartContainer>
                     </CardContent>
                   </Card>
 
@@ -107,7 +186,37 @@ export default function Page() {
                   
                   <Card>
                     <CardContent>
-                     1
+                      <ChartContainer config={chartConfig}>
+                        <BarChart
+                          accessibilityLayer
+                          data={chartData}
+                          margin={{
+                            top: 20,
+                          }}
+                        >
+                          <CartesianGrid vertical={false} />
+                          <XAxis
+                            dataKey="date"
+                            tickLine={false}
+                            tickMargin={10}
+                            axisLine={false}
+                            tickFormatter={(value) => '1' }
+                          />
+                          <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Bar dataKey="desktop" fill="#333" barSize={20} radius={[5, 5, 0, 0]}>
+                            <LabelList
+                              position="top"
+                              offset={12}
+                              className="fill-foreground"
+                              fontSize={12}
+                              
+                            />
+                          </Bar>
+                        </BarChart>
+                      </ChartContainer>
                     </CardContent>
                   </Card>
 
