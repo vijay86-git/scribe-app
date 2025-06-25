@@ -16,7 +16,7 @@ export function SignInForm({
   const router = useRouter();
 
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
-  const [status, setStatus] = useState('');
+  //const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverMessage, setServerMessage] = useState('');
 
@@ -32,7 +32,7 @@ export function SignInForm({
     const result = loginSchema.safeParse(formData);
 
     if ( ! result.success) {
-      setErrors(result.error.flatten().fieldErrors as any);
+      setErrors(result.error.flatten().fieldErrors);
       return;
     }
 
@@ -42,7 +42,7 @@ export function SignInForm({
 
     try {
           //	const res = await login(formData);
-          const res: any = await fetch('/api/login', {
+          const res = await fetch('/api/login', {
                           method: 'POST',
                           headers: {
                             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export function SignInForm({
           } else {
              setServerMessage(res.msg);
           }
-    } catch (err: any) {
+    } catch (err) {
         setServerMessage('Something went wrong!');
     }
  }
