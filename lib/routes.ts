@@ -1,6 +1,7 @@
 const ROUTES = {
   home: '/',
   signin: '/signin',
+  signup: '/signup',
   dashboard: '/dashboard',
   patientsList: '/patients',
   addPatient: '/patient/create',
