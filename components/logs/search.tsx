@@ -1,5 +1,7 @@
 import { Input } from "@/components/ui/input"
-const Search = ({ search, setSearch}) => {
+import { SearchProps } from '@/components/doctors/types'
+
+const Search = ({ search, setSearch}: SearchProps) => {
 	return (<Input
 			    placeholder="Search by name, email id..."
 			    className="max-w-sm"

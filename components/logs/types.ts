@@ -38,7 +38,6 @@ export interface ListProps {
   pagination: Pagination;
 }
 
-
 export interface ChangePageFn {
   (page: number): void;
 }
@@ -47,4 +46,13 @@ export interface PagingProps {
   doctors: Doctor[];
   pagination: Pagination;
   changePage: ChangePageFn
+}
+
+export interface SetSearchFn {
+  (): void;
+}
+
+export interface SearchProps {
+  search: string | null;
+  setSearch: SetSearchFn
 }

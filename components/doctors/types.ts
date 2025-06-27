@@ -42,3 +42,12 @@ export interface PagingProps {
   pagination: Pagination;
   changePage: ChangePageFn
 }
+
+export interface SetSearchFn {
+  (): void;
+}
+
+export interface SearchProps {
+  search: string | null;
+  setSearch: SetSearchFn
+}
