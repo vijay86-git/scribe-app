@@ -1,4 +1,4 @@
-export interface History = {
+export interface History {
   personal_health_number: string;
   patient_id: string;
   patient_name: string;

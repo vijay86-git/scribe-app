@@ -1,4 +1,4 @@
-export interface Log = {
+export interface Log {
   id: number;
   user: {
     name: string;
