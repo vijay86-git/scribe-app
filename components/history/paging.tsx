@@ -8,8 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
-import { PagingProps } from '@/components/doctors/types'
-
+import { PagingProps } from '@/components/history/types'
 
 const Paging = ({ histories, pagination, changePage}: PagingProps) => {
 
