@@ -10,7 +10,7 @@ export async function POST(req: Request) {
         const session = await decrypt(cookie);
         try {
                 const api_url: string = `${apiRoutes.histories.list}?page=${body.page}&q=${body.q}`;
-                const resp: any = await apiFetch(api_url, {
+                const resp: unknown = await apiFetch(api_url, {
                     method: 'GET',
                     headers: {
                               Authorization: `Bearer ${session.token}`,

@@ -14,9 +14,6 @@ export async function POST(req: Request) {
 
                if (resp.ok) {
                     const data = await resp.json();
-
-                    console.log('toekn', data.access_token);
-                    
                     await createSession(data.access_token);
                     return NextResponse.json({ success: true });
                 } else {
