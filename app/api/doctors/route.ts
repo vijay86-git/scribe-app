@@ -9,7 +9,7 @@ export async function POST(req: Request) {
         const cookie = (await cookies()).get('session')?.value;
         const session = await decrypt(cookie);
         try {
-                const api_url = `${apiRoutes.doctors}?page=${body.page}&q=${body.q}`;
+                const api_url: String = `${apiRoutes.doctors}?page=${body.page}&q=${body.q}`;
                 const resp: any = await apiFetch(api_url, {
                     method: 'GET',
                     headers: {
