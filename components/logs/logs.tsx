@@ -7,6 +7,18 @@ import Paging from '@/components/logs/paging'
 import List from '@/components/logs/list'
 import Search from '@/components/logs/search'
 
+type Log = {
+  id: number;
+  user: {
+    name: string;
+    email: string;
+  };
+  action: string;
+  ip_address: string;
+  contact_number: string;
+  created_at: string;
+};
+
 export default function Logs() {
 
    const [search, setSearch] = useState("");

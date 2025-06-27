@@ -5,15 +5,15 @@ import { Table, TableHeader, TableHead, TableBody, TableCell, TableRow } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/patients/paging'
 import List from '@/components/patients/list'
-//const List = React.lazy(() => import('@/components/patients/list'));
-
-// const List = React.lazy(() =>
-//   new Promise(resolve =>
-//     setTimeout(() => resolve(import('@/components/patients/list')), 2000)
-//   )
-// );
-
 import Search from '@/components/patients/search'
+
+type Patient = {
+  patient_id: number;
+  patient_name: string;
+  age: string;
+  contact_number: string;
+  personal_health_number: string;
+};
 
 export default function Patients() {
 
@@ -89,12 +89,9 @@ export default function Patients() {
                         </TableRow>
                      </TableHeader>
                      <TableBody>
-
                          <List patients={patients} pagination={pagination} loading={loading} />
-         
                      </TableBody>
                   </Table>
-
                </div>
                <div className="mt-5">
                   <Paging patients={patients} pagination={pagination} changePage={changePage} />

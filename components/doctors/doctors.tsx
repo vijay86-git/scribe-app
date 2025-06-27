@@ -7,6 +7,12 @@ import Paging from '@/components/doctors/paging'
 import List from '@/components/doctors/list'
 import Search from '@/components/doctors/search'
 
+type Doctor = {
+  id: number;
+  name: string;
+  email: string;
+};
+
 export default function Doctors() {
 
    const [search, setSearch] = useState("");

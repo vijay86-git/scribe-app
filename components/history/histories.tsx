@@ -7,6 +7,15 @@ import Paging from '@/components/history/paging'
 import List from '@/components/history/list'
 import Search from '@/components/history/search'
 
+type History = {
+  personal_health_number: string;
+  patient_id: any;
+  patient_name: string;
+  created_at: string;
+  uuid: string;
+  contact_number: string;
+};
+
 export default function Histories() {
 
    const [search, setSearch] = useState("");
