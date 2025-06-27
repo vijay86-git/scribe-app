@@ -4,11 +4,26 @@ export interface Doctor {
   email: string;
 }
 
+export interface Link {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+
 export interface Pagination {
-  currentPage: number;
-  totalPages: number;
-  perPage: number;
-  totalItems: number;
+  current_page: number;
+  first_page_url: string | null;
+  from: number;
+  last_page: number;
+  last_page_url: string | null;
+  links: Link[];
+  next_page_url: string | null;
+  path: string | null;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
 }
 
 export interface ListProps {
