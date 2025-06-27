@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface Log {
   id: number;
   user: {
@@ -48,9 +50,7 @@ export interface PagingProps {
   changePage: ChangePageFn
 }
 
-export interface SetSearchFn {
-  (): void;
-}
+export type SetSearchFn = Dispatch<SetStateAction<string>>;
 
 export interface SearchProps {
   search: string | null;

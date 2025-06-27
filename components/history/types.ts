@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface History {
   personal_health_number: string;
   patient_id: string;
@@ -45,9 +47,7 @@ export interface PagingProps {
   changePage: ChangePageFn
 }
 
-export interface SetSearchFn {
-  (): void;
-}
+export type SetSearchFn = Dispatch<SetStateAction<string>>;
 
 export interface SearchProps {
   search: string | null;
