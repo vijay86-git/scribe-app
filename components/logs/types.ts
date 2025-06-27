@@ -36,7 +36,7 @@ export interface Pagination {
 
 export interface ListProps {
   loading: boolean;
-  histories: History[];
+  logs: Log[];
   pagination: Pagination;
 }
 
