@@ -8,8 +8,10 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+import { PagingProps } from '@/components/doctors/types'
 
-const Paging = ({ histories, pagination, changePage}) => {
+
+const Paging = ({ histories, pagination, changePage}: PagingProps) => {
 
    return ( histories && histories?.length > 0 && pagination?.total > Number(process.env.NEXT_PUBLIC_PAGINATION_LIMIT) && <Pagination>
              <PaginationContent>

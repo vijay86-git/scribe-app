@@ -34,3 +34,13 @@ export interface ListProps {
   histories: History[];
   pagination: Pagination;
 }
+
+export interface ChangePageFn {
+  (page: number): void;
+}
+
+export interface PagingProps {
+  doctors: Doctor[];
+  pagination: Pagination;
+  changePage: ChangePageFn
+}
