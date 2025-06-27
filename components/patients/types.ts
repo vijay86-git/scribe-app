@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+
 export interface Patient {
   patient_id: number;
   patient_name: string;
@@ -39,7 +40,7 @@ export interface ChangePageFn {
 }
 
 export interface PagingProps {
-  doctors: Doctor[];
+  patients: Patient[];
   pagination: Pagination;
   changePage: ChangePageFn
 }

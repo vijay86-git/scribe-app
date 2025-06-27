@@ -42,7 +42,7 @@ export interface ChangePageFn {
 }
 
 export interface PagingProps {
-  doctors: Doctor[];
+  histories: History[];
   pagination: Pagination;
   changePage: ChangePageFn
 }
