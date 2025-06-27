@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
         try {
                 const api_url: string = `${apiRoutes.doctors}?page=${body.page}&q=${body.q}`;
-                const resp: unknown = await apiFetch(api_url, {
+                const resp: Response = await apiFetch(api_url, {
                     method: 'GET',
                     headers: {
                               Authorization: `Bearer ${session?.token}`,
