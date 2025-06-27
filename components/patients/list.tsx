@@ -3,7 +3,9 @@ import { Badge } from '@/components/ui/badge'
 import { Edit, Trash } from "lucide-react";
 import Skeleton from '@/components/patients/skeleton'
 
-const List = ({loading, patients, pagination}) => {
+import { ListProps } from '@/components/patients/types'
+
+const List = ({loading, patients, pagination}: ListProps) => {
 
    if (loading) return <Skeleton />;
 

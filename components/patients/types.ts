@@ -31,7 +31,7 @@ export interface Pagination {
 
 export interface ListProps {
   loading: boolean;
-  histories: History[];
+  patients: Patient[];
   pagination: Pagination;
 }
 
