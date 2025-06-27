@@ -7,7 +7,7 @@ import { createSession } from '@/lib/session'
 export async function POST(req: Request) {
         const body = await req.json();
         try {
-                const resp: any = await apiFetch(apiRoutes.auth.login, {
+                const resp: unknown = await apiFetch(apiRoutes.auth.login, {
                     method: 'POST',
                     body: JSON.stringify(body),
                 });
