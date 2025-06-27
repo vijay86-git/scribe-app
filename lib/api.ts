@@ -6,7 +6,7 @@ export async function apiFetch<T>(
   options?: RequestInit
 ): Promise<T> {
 
-  const response: unknown = await fetch(`${API_BASE_URL}${endpoint}`, {
+  const response: Response = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
       ...(options?.headers || {}),
