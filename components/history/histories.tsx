@@ -6,15 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/history/paging'
 import List from '@/components/history/list'
 import Search from '@/components/history/search'
-
-type History = {
-  personal_health_number: string;
-  patient_id: string;
-  patient_name: string;
-  created_at: string;
-  uuid: string;
-  contact_number: string;
-};
+import { History } from '@/components/history/types'
 
 export default function Histories() {
 

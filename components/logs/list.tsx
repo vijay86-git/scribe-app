@@ -3,8 +3,9 @@ import { Badge } from '@/components/ui/badge'
 import { Edit, Trash } from "lucide-react";
 import Skeleton from '@/components/logs/skeleton'
 import { format, parseISO } from 'date-fns';
+import { ListProps } from '@/components/logs/types'
 
-const List = ({loading, logs, pagination}) => {
+const List = ({loading, logs, pagination}: ListProps) => {
 
    if (loading) return <Skeleton />;
 

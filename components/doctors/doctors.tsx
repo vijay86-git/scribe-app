@@ -6,12 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/doctors/paging'
 import List from '@/components/doctors/list'
 import Search from '@/components/doctors/search'
-
-type Doctor = {
-  id: number;
-  name: string;
-  email: string;
-};
+import { Doctor } from '@/components/doctors/types'
 
 export default function Doctors() {
 

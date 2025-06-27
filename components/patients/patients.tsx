@@ -6,14 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/patients/paging'
 import List from '@/components/patients/list'
 import Search from '@/components/patients/search'
-
-type Patient = {
-  patient_id: number;
-  patient_name: string;
-  age: string;
-  contact_number: string;
-  personal_health_number: string;
-};
+import { Patient } from '@/components/logs/types'
 
 export default function Patients() {
 
