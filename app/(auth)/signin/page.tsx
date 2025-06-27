@@ -1,6 +1,14 @@
-import { SignInForm } from '@/components/auth/signin';
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { SignInForm } from '@/components/auth/signin';
+
 
 export default function Page() {
   return (
@@ -9,7 +17,21 @@ export default function Page() {
         <Link href="/" className="flex items-center gap-2 self-center font-medium">
           <Image width={180} height={43} src={`/images/logo.png`} priority alt="ADGScribe" />
         </Link>
-        <SignInForm />
+
+         <div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Log In as Clinic</CardTitle>
+                <CardDescription>
+                  Enter your email below to login to your account
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                  <SignInForm />
+              </CardContent>
+            </Card>
+          </div>
+
       </div>
     </div>
   )

@@ -120,3 +120,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.act{background:#23477d !important}
+
+.errBox{background:#ffdddd;border:1px solid #ff97b4;height:30px;line-height:30px;padding-left:10px;border-radius:3px;color:#c71515;animation:fade-in 3s;}
+.sucBox{background:#ddffec;border:1px solid #97ffcd;height:30px;line-height:30px;padding-left:10px;border-radius:3px;color:#087819;animation:fade-in 3s;}

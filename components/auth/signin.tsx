@@ -1,13 +1,15 @@
-'use client'
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { cn } from "@/lib/utils"
+"use client"
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { z } from "zod";
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { loginFormSchema } from '@/schemas/login-schema'
+import { Button } from "@/components/ui/button";
+import { apiRoutes } from '@/lib/apiRoutes';
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { loginFormSchema } from "@/schemas/login-schema";
 
 type FormData = z.infer<typeof loginFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
@@ -16,16 +18,11 @@ export function SignInForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-
   const router = useRouter();
-
-  // const [formData, setFormData] = useState<FormData>({
-  //   email: "",
-  //   password: ""
-  // });
+  
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [serverMessage, setServerMessage] = useState('');
+  const [serverMessage, setServerMessage] = useState("");
 
   const validateForm = (data: FormData): FormErrors => {
     try {
@@ -38,11 +35,6 @@ export function SignInForm({
       return {};
     }
   };
-
-
-  //const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
-  //const [status, setStatus] = useState('');
-  
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -57,76 +49,43 @@ export function SignInForm({
     const newErrors = validateForm(formData);
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-          try {
-          		  setIsSubmitting(true);
-		          //	const res = await login(formData);
-		          	const res = await fetch('/api/login', {
-		                          method: 'POST',
-		                          headers: {
-		                            'Content-Type': 'application/json',
-		                          },
-		                          body: JSON.stringify(formData),
-		                        });
-		          const data = await res.json();
-		          if (data.success) {
-		             router.push('/dashboard');
-		          } else {
-		             setServerMessage(data.msg);
-		          }
-		    } catch (err: unknown) {
-		    	setIsSubmitting(false);
-		    	//const e = err.message;
+      try {
+        setServerMessage('');
+        setIsSubmitting(true);
+        //  const res = await login(formData);
+        const res = await fetch(`/api/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
 
-		    	if (err instanceof Error) {
-			        setServerMessage(err.message);// // works, `e` narrowed to string
-			    } else if (e instanceof Error) {
-			        setServerMessage('something went wrong'); // works, `e` narrowed to Error
-			    }
+        const data = await res.json();
+        setIsSubmitting(false);
 
-		    }
+        if (data.success) {
+          router.push(apiRoutes.dashboard);
+        } else {
+          setServerMessage(data.msg.message);
+        }
+      } catch (err: unknown) {
+        setIsSubmitting(false);
+        if (err instanceof Error) {
+          setServerMessage(err.message); // // works, `e` narrowed to string
+        } else if (e instanceof Error) {
+          setServerMessage("Oops! Something went wrong"); // works, `e` narrowed to Error
+        }
+      }
     }
-
-
-    // const form = e.target as HTMLFormElement;
-    // const formData = {
-    //   email: form.email.value,
-    //   password: form.password.value,
-    // };
-
-    // const result = loginFormSchema.safeParse(formData);
-
-    // if ( ! result.success) {
-    //   //setErrors(result.error.flatten().fieldErrors);
-
-    // 	const newErrors: Partial<Record<string, string>> = result.error.errors.reduce((acc, error) => {
-    //     	acc[error.path[0] as string] = error.message; // Store the error message by the field name
-    //     	return acc;
-    //   }, {});
-
-
-    //   return;
-    // }
-
-    // setErrors({});
-
-    // setIsSubmitting(true);
-
-
- }
+  }
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
-        <CardHeader>
-          <CardTitle>Log In as Clinic</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex flex-col gap-6">
-              {serverMessage && <p className="text-red-500 text-xs">{serverMessage}</p>}
+              {serverMessage && (
+                <p className="errBox text-xs">{serverMessage}</p>
+              )}
 
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -138,7 +97,9 @@ export function SignInForm({
                   defaultValue="vijay.singh@adgonline.in"
                   disabled={isSubmitting}
                 />
-                {errors.email && <p className="text-red-500 text-xs">{errors.email[0]}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-xs">{errors.email[0]}</p>
+                )}
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
@@ -150,11 +111,24 @@ export function SignInForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" name="password" disabled={isSubmitting} defaultValue="12345678" />
-                {errors.password && <p className="text-red-500 text-xs">{errors.password[0]}</p>}
+                <Input
+                  id="password"
+                  type="password"
+                  name="password"
+                  disabled={isSubmitting}
+                  defaultValue="12345678"
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-xs">{errors.password[0]}</p>
+                )}
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className={`w-full ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                <Button
+                  type="submit"
+                  className={`w-full ${
+                    isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
                   Let's get started
                 </Button>
                 <Button variant="outline" className="w-full">
@@ -175,8 +149,5 @@ export function SignInForm({
               </a>
             </div>
           </form>
-        </CardContent>
-      </Card>
-    </div>
-  )
+  );
 }
