@@ -8,9 +8,13 @@ export async function POST(req: Request) {
         const body = await req.json();
         const cookie = (await cookies()).get('session')?.value;
         const session = await decrypt(cookie);
+        if (!session || !session.token) {
+          return NextResponse.json({ success: false, msg: { message: "Unauthorized" } }, { status: 401 });
+        }
+
         try {
                 const api_url: string = `${apiRoutes.patients}?page=${body.page}&q=${body.q}`;
-                const resp: unknown = await apiFetch(api_url, {
+                const resp: Response = await apiFetch(api_url, {
                     method: 'GET',
                     headers: {
                               Authorization: `Bearer ${session.token}`,
