@@ -2,6 +2,7 @@ export interface Doctor {
   id: number;
   name: string;
   email: string;
+  created_at: string;
 }
 
 export interface Link {

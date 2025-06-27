@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/patients/paging'
 import List from '@/components/patients/list'
 import Search from '@/components/patients/search'
-import { Patient } from '@/components/logs/types'
+import { Patient, Pagination } from '@/components/logs/types'
 
 export default function Patients() {
 
@@ -14,7 +14,7 @@ export default function Patients() {
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [patients, setPatients] = useState<Patient[]>([]);
    const [loading, setLoading] = useState(false);
-   const [pagination, setPagination] = useState({ current_page: 1, last_page: 1 });
+   const [pagination, setPagination] = useState<Pagination>({current_page: 1, first_page_url: null, from: 0, last_page: 1, last_page_url: null,links: [], next_page_url: null, path: null, per_page: 10, prev_page_url: null, to: 0, total: 0});
 
    const fetchPatients = async (page = 1, debouncedQuery = '') => {
       const res = await fetch(`/api/patients`, {

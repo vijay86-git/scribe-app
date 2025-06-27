@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/logs/paging'
 import List from '@/components/logs/list'
 import Search from '@/components/logs/search'
-import { Log } from '@/components/logs/types'
+import { Log, Pagination } from '@/components/logs/types'
 
 export default function Logs() {
 
@@ -14,7 +14,7 @@ export default function Logs() {
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [logs, setLogs] = useState<Log[]>([]);
    const [loading, setLoading] = useState(false);
-   const [pagination, setPagination] = useState({ current_page: 1, last_page: 1 });
+   const [pagination, setPagination] = useState<Pagination>({current_page: 1, first_page_url: null, from: 0, last_page: 1, last_page_url: null,links: [], next_page_url: null, path: null, per_page: 10, prev_page_url: null, to: 0, total: 0});
 
    const fetchLogs = async (page = 1, debouncedQuery = '') => {
       const res = await fetch(`/api/logs`, {

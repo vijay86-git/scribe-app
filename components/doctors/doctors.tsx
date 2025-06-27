@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/doctors/paging'
 import List from '@/components/doctors/list'
 import Search from '@/components/doctors/search'
-import { Doctor } from '@/components/doctors/types'
+import { Doctor, Pagination } from '@/components/doctors/types'
 
 export default function Doctors() {
 
@@ -14,7 +14,7 @@ export default function Doctors() {
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [doctors, setDoctors] = useState<Doctor[]>([]);
    const [loading, setLoading] = useState(false);
-   const [pagination, setPagination] = useState({ current_page: 1, last_page: 1 });
+   const [pagination, setPagination] = useState<Pagination>({current_page: 1, first_page_url: null, from: 0, last_page: 1, last_page_url: null,links: [], next_page_url: null, path: null, per_page: 10, prev_page_url: null, to: 0, total: 0});
 
    const fetchDoctors = async (page = 1, debouncedQuery = '') => {
       const res = await fetch(`/api/doctors`, {

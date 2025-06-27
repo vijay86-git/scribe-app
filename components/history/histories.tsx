@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Paging from '@/components/history/paging'
 import List from '@/components/history/list'
 import Search from '@/components/history/search'
-import { History } from '@/components/history/types'
+import { History, Pagination } from '@/components/history/types'
 
 export default function Histories() {
 
@@ -14,7 +14,7 @@ export default function Histories() {
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [histories, setHistories] = useState<History[]>([]);
    const [loading, setLoading] = useState(false);
-   const [pagination, setPagination] = useState({ current_page: 1, last_page: 1 });
+   const [pagination, setPagination] = useState<Pagination>({current_page: 1, first_page_url: null, from: 0, last_page: 1, last_page_url: null,links: [], next_page_url: null, path: null, per_page: 10, prev_page_url: null, to: 0, total: 0});
 
    const fetchHistories = async (page = 1, debouncedQuery = '') => {
       const res = await fetch(`/api/history`, {
