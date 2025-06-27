@@ -9,7 +9,7 @@ import Search from '@/components/history/search'
 
 type History = {
   personal_health_number: string;
-  patient_id: any;
+  patient_id: string;
   patient_name: string;
   created_at: string;
   uuid: string;
