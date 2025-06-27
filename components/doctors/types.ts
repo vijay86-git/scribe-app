@@ -48,6 +48,6 @@ export interface PagingProps {
 export type SetSearchFn = Dispatch<SetStateAction<string>>;
 
 export interface SearchProps {
-  search: string | null;
+  search: string;
   setSearch: SetSearchFn
 }

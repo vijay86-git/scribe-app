@@ -10,7 +10,7 @@ import { History, Pagination } from '@/components/history/types'
 
 export default function Histories() {
 
-   const [search, setSearch] = useState("");
+   const [search, setSearch] = useState<string>('');
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [histories, setHistories] = useState<History[]>([]);
    const [loading, setLoading] = useState(false);

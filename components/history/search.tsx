@@ -5,7 +5,7 @@ const Search = ({ search, setSearch}: SearchProps) => {
 	return (<Input
 			    placeholder="Search by patient id, personal health number..."
 			    className="max-w-sm"
-			    value={search}
+			    value={search ?? ''}
 			    onChange={(e) => setSearch(e.target.value)}
 			/>)
 }

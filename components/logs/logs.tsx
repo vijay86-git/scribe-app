@@ -10,7 +10,7 @@ import { Log, Pagination } from '@/components/logs/types'
 
 export default function Logs() {
 
-   const [search, setSearch] = useState("");
+   const [search, setSearch] = useState<string>('');
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [logs, setLogs] = useState<Log[]>([]);
    const [loading, setLoading] = useState(false);

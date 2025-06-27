@@ -10,7 +10,7 @@ import { Doctor, Pagination } from '@/components/doctors/types'
 
 export default function Doctors() {
 
-   const [search, setSearch] = useState("");
+   const [search, setSearch] = useState<string>('');
    const [debouncedQuery, setDebouncedQuery] = useState("");
    const [doctors, setDoctors] = useState<Doctor[]>([]);
    const [loading, setLoading] = useState(false);

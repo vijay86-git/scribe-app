@@ -5,7 +5,7 @@ const Search = ({ search, setSearch}: SearchProps) => {
 	return (<Input
 			    placeholder="Search by name, email id..."
 			    className="max-w-sm"
-			    value={search}
+			    value={search ?? ''}
 			    onChange={(e) => setSearch(e.target.value)}
 			/>)
 }
