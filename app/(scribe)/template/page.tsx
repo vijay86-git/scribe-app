@@ -44,7 +44,7 @@ export default async function Page() {
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
 
-		            <h1 className="scroll-m-20 text-left text-2xl font-extrabold tracking-tight text-balance">
+		            <h1 className="tracking-wide  scroll-m-20 text-left text-2xl font-extrabold tracking-tight text-balance">
 		              Manage Template
 		            </h1>
 

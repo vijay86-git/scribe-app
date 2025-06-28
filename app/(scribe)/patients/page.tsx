@@ -9,7 +9,7 @@ export default function Page() {
   					<SidebarInset>
 					   <Header />
 					   <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-					      <h1 className="scroll-m-20 text-left text-2xl font-extrabold tracking-tight text-balance">
+					      <h1 className="tracking-wide scroll-m-20 text-left text-2xl font-extrabold tracking-tight text-balance">
 					         {labels.patient.patientsList}
 					      </h1>
 					      <Patients /> 

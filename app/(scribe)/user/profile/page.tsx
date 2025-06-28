@@ -45,7 +45,7 @@ export default async function Page() {
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
 
-	            <h1 className="scroll-m-20 text-left text-2xl mb-4 font-extrabold tracking-tight text-balance">
+	            <h1 className="tracking-wide  scroll-m-20 text-left text-2xl mb-4 font-extrabold tracking-tight text-balance">
 	              Update Profile
 	            </h1>
 
