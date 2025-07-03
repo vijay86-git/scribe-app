@@ -74,7 +74,7 @@ export default async function Page() {
   let countries: MetaCol[] = [];
   let designations: MetaCol[] = [];
   let specializations: Specialization[] = [];
-  let clinicDetail: ClinicType;
+  let clinicDetail: ClinicType | null = null;
 
   // let clinicDetail: ClinicType = {
   //     clinic_name: "",
@@ -131,6 +131,7 @@ export default async function Page() {
                <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                   <div className="flex w-full flex-col">
                      <h1 className="scroll-m-20 text-left text-2xl mb-4 font-extrabold tracking-tight text-balance">Clinic Details</h1>
+                     {clinicDetail && (
                      <Tabs defaultValue="mandatory">
                         <TabsList>
                            <TabsTrigger value="mandatory">Mandatory</TabsTrigger>
@@ -142,7 +143,8 @@ export default async function Page() {
                         <TabsContent value="business">
                           <Optional designations={designations} clinic_detail={clinicDetail} specializations={specializations} />
                         </TabsContent>
-                     </Tabs>
+                     </Tabs>) 
+                    }
                   </div>
                </div>
             </SidebarInset>
