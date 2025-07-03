@@ -221,14 +221,14 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														      </PopoverTrigger>
 														      <PopoverContent className="w-[200px] p-0">
 														        <Command>
-														          <CommandInput placeholder="Search country..." className="h-9" onValueChange={setCountrySearch} />
+														          <CommandInput placeholder="Search country..." className="h-9" />
 														          <CommandList>
 														            <CommandEmpty>No Country found.</CommandEmpty>
 														            <CommandGroup>
 														              {countries.filter((country) => country.name.toLowerCase().includes(countrySearch.toLowerCase())).map((country) => (
 														                <CommandItem
 														                  key={String(country.id)}
-														                  value={String(country.id)}
+														                  value={String(country.name)}
 														                  onSelect={(selected) => {
 														                  	const cid: string = String(countries.find((c) => c.name === selected)?.id ?? "");
 
