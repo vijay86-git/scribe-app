@@ -211,10 +211,10 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          role="combobox"
 														          aria-expanded={open}
 														          className="justify-between"
-														        >Select Country
-														          {/*formData.country
-														            ? countries.find((country) => string(country.id) == formData.country)?.name
-														            : "Select Country..."*/}
+														        >
+														          {formData.country
+														            ? countries.find((country) => country.id == formData.country)?.name
+														            : "Select Country..."}
 														          <ChevronsUpDown className="opacity-50" />
 														        </Button>
 														      </PopoverTrigger>
@@ -227,10 +227,11 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														              {countries.map((country) => (
 														                <CommandItem
 														                  key={country.id}
-														                  value={number(country.id)}
+														                  value={country.id}
 														                  onSelect={(selected) => {
 														                  	const cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
+														                   
 														                    setFormData((prev) => ({ ...prev, country: cid }));
 														                    setOpen(false)
 														                  }}
