@@ -45,9 +45,9 @@ type Specialization = {
 
 
 type MetaDataType = {
-  country: MetaCol[] | null; 
-  specialization: MetaCol[] | null;
-  designation: MetaCol[] | null;
+  countries: MetaCol[] | null; 
+  designations: MetaCol[] | null;
+  specializations: Specialization[] | null;
 };
 
 type ClinicType = {
@@ -74,7 +74,6 @@ export default async function Page() {
   let countries: MetaCol[] = [];
   let designations: MetaCol[] = [];
   let specializations: Specialization[] = [];
-
   let clinicDetail: ClinicType;
 
   // let clinicDetail: ClinicType = {
