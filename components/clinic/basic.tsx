@@ -91,6 +91,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	  const [isSubmitting, setIsSubmitting] = useState(false);
 	  const [serverMessage, setServerMessage] = useState("");
 	  const [formData, setFormData] = useState<FormData>({clinic_name, country, state, city, street_address, patient_id_prefix, upload_clinic_logo});
+	  const [countrySearch, setCountrySearch] = useState<string>("");
 
 	  const [open, setOpen] = useState<boolean>(false)
   	//const [value, setValue] = React.useState("")
@@ -220,11 +221,11 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														      </PopoverTrigger>
 														      <PopoverContent className="w-[200px] p-0">
 														        <Command>
-														          <CommandInput placeholder="Search country..." className="h-9" />
+														          <CommandInput placeholder="Search country..." className="h-9" onValueChange={setCountrySearch} />
 														          <CommandList>
 														            <CommandEmpty>No Country found.</CommandEmpty>
 														            <CommandGroup>
-														              {countries.map((country) => (
+														              {countries.filter((country) => country.name.toLowerCase().includes(countrySearch.toLowerCase())).map((country) => (
 														                <CommandItem
 														                  key={String(country.id)}
 														                  value={String(country.id)}
