@@ -57,7 +57,7 @@ type ClinicType = {
     city: string;
     state: string;
     zip_code: number;
-    country: number;
+    country: string;
     gst_no: string;
     patient_id_prefix: string;
     image?: string;
