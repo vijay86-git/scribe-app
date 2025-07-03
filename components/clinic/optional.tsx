@@ -112,7 +112,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="designation">Designation/Role</Label>
                              {designations && designations.length > 0 && (
-                                    <Select value={number(formData.designation)}>
+                                    <Select value={string(formData.designation)}>
                                       <SelectTrigger className="w-full">
                                         <SelectValue placeholder="Select a designation" />
                                       </SelectTrigger>
