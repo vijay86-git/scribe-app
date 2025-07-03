@@ -90,7 +90,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	  const [msg, setMsg] = useState(false);
 	  const [isSubmitting, setIsSubmitting] = useState(false);
 	  const [serverMessage, setServerMessage] = useState("");
-	  const [formData, setFormData] = useState<FormData>({clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo, upload_clinic_logo});
+	  const [formData, setFormData] = useState<FormData>({clinic_name, country, state, city, street_address, patient_id_prefix, upload_clinic_logo});
 
 	  const [open, setOpen] = useState<boolean>(false)
   	//const [value, setValue] = React.useState("")
