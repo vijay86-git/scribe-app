@@ -68,7 +68,6 @@ type ClinicType = {
     website_clinic_url?: string;
     year_establishment?: string;
     ai_filter?: string;
-    upload_clinic_logo?: any;
 };
 
 import {
@@ -83,14 +82,14 @@ type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
 export default function Basic({countries, clinic_detail}: {countries: MetaCol[], clinic_detail: ClinicType}) {
 		
-	  const {clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo} = clinic_detail;
+	  const {clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo, upload_clinic_logo = null} = clinic_detail;
 
 		const [formError, setFormErrors] = useState<FormErrors>({});
 	  const [errors, setErrors] = useState<FormErrors>({});
 	  const [loading, setLoading] = useState<boolean>(true);
 	  const [msg, setMsg] = useState(false);
 	  const [isSubmitting, setIsSubmitting] = useState(false);
-	  const [serverMessage, setServerMessage] = useState<string>("");
+	  const [serverMessage, setServerMessage] = useState("");
 	  const [formData, setFormData] = useState<FormData>({clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo, upload_clinic_logo});
 
 	  const [open, setOpen] = useState<boolean>(false)
