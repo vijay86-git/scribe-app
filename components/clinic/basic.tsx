@@ -164,7 +164,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	        console.log(data, 'data');
 	        return;
 	        if (data.success) {
-	            setUpdateMsg(true);
+	            //setUpdateMsg(true);
 	        } 
 
 	        if (data?.msg?.errors) {
