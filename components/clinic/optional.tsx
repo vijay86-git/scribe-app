@@ -67,7 +67,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
   const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(clinic_detail.specializations);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value,

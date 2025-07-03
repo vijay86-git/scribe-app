@@ -111,7 +111,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	    }
 	  };
 
-	  const handleChange = (e) => {
+	  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 	    setFormData({
 	      ...formData,
 	      [e.target.name]: e.target.value,
