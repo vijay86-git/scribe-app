@@ -49,6 +49,7 @@ type ClinicType = {
     website_clinic_url?: string;
     year_establishment?: string;
     ai_filter?: string;
+    specializations?: number[]
 };
 
 type Specialization = {
@@ -95,7 +96,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="clinic_specializations">Clinic Specializations</Label>
                              
-                              <MultiSelect
+                              {/*<MultiSelect
                                   options={specializations}
                                   onValueChange={setSelectedSpecializations}
                                   defaultValue={selectedSpecializations}
@@ -103,6 +104,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                                   variant="inverted"
                                   maxCount={1}
                                />
+                               */}
 
                           </div>
                        </div>
