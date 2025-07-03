@@ -230,7 +230,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														                  key={String(country.id)}
 														                  value={String(country.id)}
 														                  onSelect={(selected) => {
-														                  	const cid: String = countries.find((c) => c.name === selected)?.id ?? "";
+														                  	const cid: string = countries.find((c) => c.name === selected)?.id ?? "";
 														                    //setValue(currentValue === value ? "" : currentValue)
 
 														                    setFormData((prev) => ({ ...prev, country: cid }));
