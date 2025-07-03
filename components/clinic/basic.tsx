@@ -84,7 +84,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 		
 	  const {clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo, upload_clinic_logo = null} = clinic_detail;
 
-		const [formError, setFormErrors] = useState<FormValidationErrors>({});
+		const [formError, setFormErrors] = useState<FormErrors>({});
 	  const [errors, setErrors] = useState<FormErrors>({});
 	  const [loading, setLoading] = useState<boolean>(true);
 	  const [msg, setMsg] = useState(false);
