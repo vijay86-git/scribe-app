@@ -133,7 +133,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="year_establishment">Year of Establishment</Label>
-                             <Select value={number(formData.year_establishment)}>
+                             <Select value={String(formData.year_establishment})>
                                 <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Select Year of Establishment" />
                                 </SelectTrigger>
