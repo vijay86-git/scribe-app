@@ -241,7 +241,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														                  <Check
 														                    className={cn(
 														                      "ml-auto",
-														                      formData.country == country.id ? "opacity-100" : "opacity-0"
+														                      String(formData.country) == String(country.id) ? "opacity-100" : "opacity-0"
 														                    )}
 														                  />
 														                </CommandItem>
