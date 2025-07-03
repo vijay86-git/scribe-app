@@ -118,7 +118,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	    });
 	  };
 
-	  const handleImageChange = (e) => {
+	  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 	    const file = e.target.files?.[0];
 	    if (file) {
 	      setFormData((prev) => ({ ...prev, upload_clinic_logo: file }));
