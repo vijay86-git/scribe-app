@@ -212,7 +212,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          aria-expanded={open}
 														          className="justify-between"
 														        >
-														        	"Select Country..."
+														        	Select Country...
 														          {/*formData.country
 														            ? countries.find((country) => string(country.id) == string(formData.country))?.name
 														            : "Select Country..."*/}
@@ -225,12 +225,12 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          <CommandList>
 														            <CommandEmpty>No Country found.</CommandEmpty>
 														            <CommandGroup>
-														              {/*countries.map((country) => (
+														              {countries.map((country) => (
 														                <CommandItem
-														                  key={string(country.id)}
-														                  value={string(country.id)}
+														                  key={String(country.id)}
+														                  value={String(country.id)}
 														                  onSelect={(selected) => {
-														                  	const cid = countries.find((country) => country.name == selected)?.id;
+														                  	const cid: string = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
 
 														                    setFormData((prev) => ({ ...prev, country: cid }));
@@ -245,7 +245,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														                    )}
 														                  />
 														                </CommandItem>
-														              ))*/}
+														              ))}
 														            </CommandGroup>
 														          </CommandList>
 														        </Command>
