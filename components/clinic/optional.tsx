@@ -118,7 +118,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                                       </SelectTrigger>
                                       <SelectContent>
                                         {designations.map((item, idx) => (
-                                          <SelectItem key={idx} value={item.id}>
+                                          <SelectItem key={idx} value={String(item.id)}>
                                             {item.name}
                                           </SelectItem>
                                         ))}
