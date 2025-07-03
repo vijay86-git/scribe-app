@@ -44,7 +44,7 @@ import Optional from '@/components/clinic/optional'
 import { apiFetch } from '@/lib/api';
 import { apiRoutes } from '@/lib/apiRoutes';
 
-type Meta = {
+type MetaCol = {
   id: number;
   name: string;
 };
@@ -56,9 +56,9 @@ type Specialization = {
 
 
 type MetaDataType = {
-  country: Meta[] | null; 
-  specialization: Meta[] | null;
-  designation: Meta[] | null;
+  country: MetaCol[] | null; 
+  specialization: MetaCol[] | null;
+  designation: MetaCol[] | null;
 };
 
 type ClinicType = {
@@ -82,8 +82,8 @@ type ClinicType = {
 
 export default async function Page() {
 
-  let countries: Meta[] = [];
-  let designations: Meta[] = [];
+  let countries: MetaCol[] = [];
+  let designations: MetaCol[] = [];
   let specializations: Specialization[] = [];
 
   let clinicDetail: ClinicType;

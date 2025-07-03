@@ -35,15 +35,15 @@ import {
 
 import { MultiSelect } from "@/components/multi-select";
 
-type Meta = {
+type MetaCol = {
   id: number;
   name: string;
 };
 
 type MetaDataType = {
-  country: Meta[] | null; 
-  specialization: Meta[] | null;
-  designation: Meta[] | null;
+  country: MetaCol[] | null; 
+  specialization: MetaCol[] | null;
+  designation: MetaCol[] | null;
 };
 
 type ClinicType = {
@@ -59,7 +59,7 @@ import { clinicProfileOptionalFormSchema } from "@/schemas/clinic-profile-option
 type FormData = z.infer<typeof clinicProfileOptionalFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
-export default function Optional({designations, specializations, clinic_detail}: {designations: Meta[], specializations: Meta[], clinic_detail: ClinicType}) {
+export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: MetaCol[], clinic_detail: ClinicType}) {
 
   const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter} = clinic_detail;
 
