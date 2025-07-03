@@ -225,17 +225,17 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          <CommandList>
 														            <CommandEmpty>No Country found.</CommandEmpty>
 														            <CommandGroup>
-														              {countries.map((country) => (
+														              {/*countries.map((country) => (
 														                <CommandItem
 														                  key={string(country.id)}
 														                  value={string(country.id)}
-														                  /*onSelect={(selected) => {
+														                  onSelect={(selected) => {
 														                  	const cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
 
 														                    setFormData((prev) => ({ ...prev, country: cid }));
 														                    setOpen(false)
-														                  }}*/
+														                  }}
 														                >
 														                  {country.name}
 														                  <Check
@@ -245,7 +245,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														                    )}
 														                  />
 														                </CommandItem>
-														              ))}
+														              ))*/}
 														            </CommandGroup>
 														          </CommandList>
 														        </Command>
