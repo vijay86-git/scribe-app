@@ -229,7 +229,7 @@ export default function Basic({countries, clinic_detail}: {countries: Meta[], cl
 														                  key={country.id}
 														                  value={number(country.id)}
 														                  onSelect={(selected) => {
-														                  	let cid = countries.find((country) => country.name == selected)?.id;
+														                  	const cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
 														                    setFormData((prev) => ({ ...prev, country: cid }));
 														                    setOpen(false)
