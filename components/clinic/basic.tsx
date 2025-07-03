@@ -212,9 +212,10 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          aria-expanded={open}
 														          className="justify-between"
 														        >
-														          {formData.country
+														        	"Select Country..."
+														          {/*formData.country
 														            ? countries.find((country) => string(country.id) == string(formData.country))?.name
-														            : "Select Country..."}
+														            : "Select Country..."*/}
 														          <ChevronsUpDown className="opacity-50" />
 														        </Button>
 														      </PopoverTrigger>
@@ -226,21 +227,21 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														            <CommandGroup>
 														              {countries.map((country) => (
 														                <CommandItem
-														                  key={country.id}
+														                  key={string(country.id)}
 														                  value={string(country.id)}
-														                  onSelect={(selected) => {
+														                  /*onSelect={(selected) => {
 														                  	const cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
 
 														                    setFormData((prev) => ({ ...prev, country: cid }));
 														                    setOpen(false)
-														                  }}
+														                  }}*/
 														                >
 														                  {country.name}
 														                  <Check
 														                    className={cn(
 														                      "ml-auto",
-														                      formData.country === country.id ? "opacity-100" : "opacity-0"
+														                      formData.country == country.id ? "opacity-100" : "opacity-0"
 														                    )}
 														                  />
 														                </CommandItem>
