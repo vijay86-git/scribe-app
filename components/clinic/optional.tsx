@@ -40,11 +40,6 @@ type MetaCol = {
   name: string;
 };
 
-type MetaDataType = {
-  country: MetaCol[] | null; 
-  specialization: MetaCol[] | null;
-  designation: MetaCol[] | null;
-};
 
 type ClinicType = {
     no_of_doctors?: number;

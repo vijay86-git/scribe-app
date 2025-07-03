@@ -45,9 +45,9 @@ type Specialization = {
 
 
 type MetaDataType = {
-  countries: MetaCol[] | null; 
-  designations: MetaCol[] | null;
-  specializations: Specialization[] | null;
+  countries: MetaCol[]; 
+  designations: MetaCol[];
+  specializations: Specialization[];
 };
 
 type ClinicType = {
