@@ -212,10 +212,9 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          aria-expanded={open}
 														          className="justify-between"
 														        >
-														        	Select Country...
-														          {/*formData.country
-														            ? countries.find((country) => string(country.id) == string(formData.country))?.name
-														            : "Select Country..."*/}
+														          {formData.country
+														            ? countries.find((country) => String(country.id) === String(formData.country))?.name
+														            : "Select Country..."}
 														          <ChevronsUpDown className="opacity-50" />
 														        </Button>
 														      </PopoverTrigger>
