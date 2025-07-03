@@ -95,7 +95,7 @@ export default async function Page() {
   //     ai_filter: ""
   // };
 
-  const api_base_url: string = process.env.NEXT_PUBLIC_API_BASE_URL; 
+  const api_base_url: string = process.env.NEXT_PUBLIC_API_BASE_URL || ''; 
   const metadataUrl = await apiRoutes.metadata;
   const clinicDetails = await apiRoutes.clinicDetails;
 
