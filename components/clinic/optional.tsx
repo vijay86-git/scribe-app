@@ -95,17 +95,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                           </div>
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="clinic_specializations">Clinic Specializations</Label>
-                             
-                              {/*<MultiSelect
-                                  options={specializations}
-                                  onValueChange={setSelectedSpecializations}
-                                  defaultValue={selectedSpecializations}
-                                  placeholder="Select Specializations"
-                                  variant="inverted"
-                                  maxCount={1}
-                               />
-                               */}
-
+                          
                           </div>
                        </div>
 
