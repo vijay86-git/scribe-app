@@ -213,7 +213,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														          className="justify-between"
 														        >
 														          {formData.country
-														            ? countries.find((country) => country.id == formData.country)?.name
+														            ? countries.find((country) => string(country.id) == string(formData.country))?.name
 														            : "Select Country..."}
 														          <ChevronsUpDown className="opacity-50" />
 														        </Button>
