@@ -8,6 +8,7 @@ const Search = ({ search, setSearch}: SearchProps) => {
 			    className="max-w-sm"
 			    value={search ?? ''}
 			    onChange={(e) => setSearch(e.target.value)}
+			    autoComplete="off"
 			/>)
 }
 

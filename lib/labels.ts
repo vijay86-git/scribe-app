@@ -14,6 +14,9 @@ const labels = {
   },
   logs: {
     list: "Logs"
+  },
+  user: {
+    updateProfile: "Update Profile"
   }
 };
 

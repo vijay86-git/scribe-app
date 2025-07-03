@@ -9,12 +9,14 @@ export const apiRoutes = {
     login: `/login`,
     register: `/register`,
     logout: `/logout`,
-    profile: `/profile`,
   },
-
+  profile: '/user/profile',
+  metadata: '/metadata',
   scribe: {
     upload: `/upload`
   },
+  clinicDetails: '/clinic-details',
+  updateClinicBasicDetails: '/update-clinic-basic-details',
 
   histories: {
     getHistoryById: (id: string) => `/history/info/${id}`,

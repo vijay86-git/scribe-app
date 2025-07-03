@@ -6,7 +6,7 @@ export async function apiFetch<T>(
   options?: RequestInit
 ): Promise<T> {
 
-  console.log("Incoming request", API_BASE_URL, endpoint);
+  console.log("Incoming request", `${API_BASE_URL}${endpoint}`);
 
   const response: Response = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: {
@@ -16,7 +16,7 @@ export async function apiFetch<T>(
     ...options,
   });
 
-  if (response.status === 401) {
+  if (response.status === 401 || response.status === 422) {
     return response as T;
   }
 
