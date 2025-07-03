@@ -28,17 +28,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type Meta = {
-  id: number;
-  name: string;
-};
-
-type MetaDataType = {
-  country: Meta[] | null; 
-  specialization: Meta[] | null;
-  designation: Meta[] | null;
-};
-
 import Basic from '@/components/clinic/basic'
 import Optional from '@/components/clinic/optional'
 import { apiFetch } from '@/lib/api';
