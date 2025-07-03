@@ -227,11 +227,11 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 														              {countries.map((country) => (
 														                <CommandItem
 														                  key={country.id}
-														                  value={country.id}
+														                  value={string(country.id)}
 														                  onSelect={(selected) => {
 														                  	const cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
-														                   
+
 														                    setFormData((prev) => ({ ...prev, country: cid }));
 														                    setOpen(false)
 														                  }}
