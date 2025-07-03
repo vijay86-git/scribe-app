@@ -47,8 +47,8 @@ type MetaDataType = {
 };
 
 type ClinicType = {
-    no_of_doctors?: Number;
-    daily_monthly_patient_footfall?: Number;
+    no_of_doctors?: number;
+    daily_monthly_patient_footfall?: number;
     designation?: string;
     website_clinic_url?: string;
     year_establishment?: string;
@@ -109,7 +109,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="designation">Designation/Role</Label>
                              {designations && designations.length > 0 && (
-                                    <Select value={Number(formData.designation)}>
+                                    <Select value={number(formData.designation)}>
                                       <SelectTrigger className="w-full">
                                         <SelectValue placeholder="Select a designation" />
                                       </SelectTrigger>
@@ -130,7 +130,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="year_establishment">Year of Establishment</Label>
-                             <Select value={Number(formData.year_establishment)}>
+                             <Select value={number(formData.year_establishment)}>
                                 <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Select Year of Establishment" />
                                 </SelectTrigger>

@@ -58,12 +58,12 @@ type ClinicType = {
     street_address: string;
     city: string;
     state: string;
-    zip_code: Number;
-    country: Number;
+    zip_code: number;
+    country: number;
     gst_no: string;
     patient_id_prefix: string;
-    no_of_doctors?: Number;
-    daily_monthly_patient_footfall?: Number;
+    no_of_doctors?: number;
+    daily_monthly_patient_footfall?: number;
     designation?: string;
     website_clinic_url?: string;
     year_establishment?: string;
@@ -227,7 +227,7 @@ export default function Basic({countries, clinic_detail}: {countries: Meta[], cl
 														              {countries.map((country) => (
 														                <CommandItem
 														                  key={country.id}
-														                  value={Number(country.id)}
+														                  value={number(country.id)}
 														                  onSelect={(selected) => {
 														                  	let cid = countries.find((country) => country.name == selected)?.id;
 														                    //setValue(currentValue === value ? "" : currentValue)
