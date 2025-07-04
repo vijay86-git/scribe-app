@@ -17,6 +17,7 @@ export const apiRoutes = {
   },
   clinicDetails: '/clinic-details',
   updateClinicBasicDetails: '/update-clinic-basic-details',
+  updateClinicOptionalDetails: '/update-clinic-business-details',
 
   histories: {
     getHistoryById: (id: string) => `/history/info/${id}`,

@@ -110,7 +110,7 @@ export default function Optional({designations, specializations, clinic_detail}:
             setServerMessage('');
             setIsSubmitting(true);
 
-            const res = await fetch(`/api/clinic`, {
+            const res = await fetch(`/api/clinic/optional`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -186,7 +186,15 @@ export default function Optional({designations, specializations, clinic_detail}:
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                                 <Label htmlFor="designation">Designation/Role</Label>
                                 {designations && designations.length > 0 && (
-                                  <Select value={formData.designation}>
+                                  <Select 
+                                      value={formData.designation}
+                                      onValueChange={(value) =>
+                                        setFormData((prev) => ({
+                                          ...prev,
+                                          designation: value,
+                                        }))
+                                      }
+                              >
                                     <SelectTrigger className="w-full">
                                       <SelectValue placeholder="Select a designation" />
                                     </SelectTrigger>
@@ -208,13 +216,21 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="year_establishment">Year of Establishment</Label>
-                             <Select value={String(formData.year_establishment)}>
+                             <Select 
+                                  value={formData.year_establishment}
+                                  onValueChange={(value) =>
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      year_establishment: value,
+                                    }))
+                                  }
+                              >
                                 <SelectTrigger className="w-full">
                                    <SelectValue placeholder="Select Year of Establishment" />
                                 </SelectTrigger>
                                 <SelectContent>
                                   {Array.from({ length: 101 }, (_, i) => {
-                                    const year = new Date().getFullYear() - i;
+                                    const year = String(new Date().getFullYear() - i);
                                     return (
                                       <SelectItem key={year} value={year}>{year}</SelectItem>
                                     );
