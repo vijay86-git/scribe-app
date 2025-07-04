@@ -155,7 +155,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 				  	frmData.append("upload_clinic_logo", formData.upload_clinic_logo);
 				  }
 
-	        const res = await fetch(`/api/clinic`, {
+	        const res = await fetch(`/api/clinic/basic`, {
 	          method: "POST",
 	          body: frmData,
 	        });
@@ -306,7 +306,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol[],
 	                          <div className="grid w-full max-w-sm items-center gap-1.5">
 	                             <Label htmlFor="clinic_logo">Clinic Logo<sup>*</sup></Label>
 	                             <Input id="image" type="file" name="upload_clinic_logo" accept="image/*" onChange={handleImageChange} />
-	                             <Image width={120} height={0} layout="intrinsic" src={`http://127.0.0.1:8001/storage/uploads/${clinic_logo}`} />
+	                             <Image alt="" width={120} height={0} layout="intrinsic" src={`http://127.0.0.1:8001/storage/uploads/${clinic_logo}`} />
 
 	                             { errors.upload_clinic_logo && (
 						                  	   <p className="text-red-500 text-xs">{errors.upload_clinic_logo[0]}</p>

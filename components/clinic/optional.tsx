@@ -69,12 +69,85 @@ export default function Optional({designations, specializations, clinic_detail}:
 
   const [selectedSpecializations, setSelectedSpecializations] = useState<number[] | (() => number[])>(clinic_detail.specializations ?? []);
 
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [serverMessage, setServerMessage] = useState<string>("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value,
       });
     };
+
+  const validateForm = (data: FormData): FormErrors => {
+
+      try {
+        clinicProfileOptionalFormSchema.parse(data);
+        return {};
+      } catch (error) {
+        if (error instanceof z.ZodError) {
+          return error.flatten().fieldErrors;
+        }
+        return {};
+      }
+    };
+
+  async function handleSubmit(e: React.FormEvent) {
+      e.preventDefault();
+
+      const newErrors = validateForm(formData);
+      setErrors(newErrors);
+
+      console.log(Object.keys(newErrors).length, newErrors);
+
+      if (Object.keys(newErrors).length === 0) {
+
+        //setFormErrors({});
+
+        try {
+            setServerMessage('');
+            setIsSubmitting(true);
+
+            const res = await fetch(`/api/clinic`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                                    ...formData,
+                                    specializations: selectedSpecializations,
+                                  })
+            });
+
+            const data = await res.json();
+            setIsSubmitting(false);
+
+            console.log(data, 'data');
+            return;
+            if (data.success) {
+                //setUpdateMsg(true);
+            } 
+
+            if (data?.msg?.errors) {
+                setFormErrors(data.msg.errors);
+            }
+
+            if (data?.msg?.message) {
+                setServerMessage(data.msg.message);
+            }
+
+        } catch (err: unknown) {
+          setIsSubmitting(false);
+          if (err instanceof Error) {
+            setServerMessage(err.message); // // works, `e` narrowed to string
+          } else if (e instanceof Error) {
+            setServerMessage("Oops! Something went wrong"); // works, `e` narrowed to Error
+          }
+        }
+      }
+    }
 
   return (
             <Card>
@@ -83,7 +156,8 @@ export default function Optional({designations, specializations, clinic_detail}:
               </CardHeader>
               <CardContent className="grid gap-6">
                  <section className="container">
-                  <div className="flex gap-3 mb-6">
+                  <form onSubmit={handleSubmit} className="border border-gray-100 rounded-lg p-4">
+                      <div className="flex gap-3 mb-6">
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="no_of_doctors">Number of Doctors</Label>
                              <Input type="number" min="0" onChange={handleChange} placeholder="Number of Doctors" name="no_of_doctors" value={formData.no_of_doctors} />
@@ -129,7 +203,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="website_clinic_url">Website or Clinic URL <sup>*</sup></Label>
-                             <Input type="url" id="url" onChange={handleChange} placeholder="Website or Clinic URL" name="website_clinic_url" value={formData.website_clinic_url} />
+                             <Input type="text" id="url" onChange={handleChange} placeholder="Website or Clinic URL" name="website_clinic_url" value={formData.website_clinic_url} />
                           </div>
 
                           <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -153,7 +227,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                        <div className="flex gap-3"><Button className="mt-3">Save Changes</Button></div>
 
-                    
+                    </form>
                  </section>
               </CardContent>
            </Card>
