@@ -151,6 +151,8 @@ export default function Optional({designations, specializations, clinic_detail}:
 
                        </div>
 
+                       <div className="flex gap-3"><Button className="mt-3">Save Changes</Button></div>
+
                     
                  </section>
               </CardContent>
