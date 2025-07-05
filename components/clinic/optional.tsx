@@ -63,7 +63,7 @@ type CType = {
 };
 
 type Specialization = {
-  value: number;
+  value: string;
   label: string;
 };
 
