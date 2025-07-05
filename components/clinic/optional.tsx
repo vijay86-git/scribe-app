@@ -167,7 +167,91 @@ export default function Optional({designations, specializations, clinic_detail}:
               <CardContent className="grid gap-6">
                  <section className="container">
                   <form onSubmit={handleSubmit} className="border border-gray-100 rounded-lg p-4">
-                      
+                      <div className="flex gap-3 mb-6">
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                             <Label htmlFor="no_of_doctors">Number of Doctors</Label>
+                             <Input type="number" min="0" onChange={handleChange} placeholder="Number of Doctors" name="no_of_doctors" value={formData.no_of_doctors} />
+                          </div>
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                             <Label htmlFor="daily_monthly_patient_footfall">Daily/Monthly Patient Footfall</Label>
+                             <Input type="number" id="daily_monthly_patient_footfall" onChange={handleChange} placeholder="Daily/Monthly Patient Footfall" name="daily_monthly_patient_footfall" value={formData.daily_monthly_patient_footfall} />
+                          </div>
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                             <Label htmlFor="clinic_specializations">Clinic Specializations</Label>
+                             
+                                <MultiSelect
+                                  options={specializations}
+                                  onValueChange={setSelectedSpecializations}
+                                  defaultValue={selectedSpecializations}
+                                  placeholder="Select Specializations"
+                                  variant="inverted"
+                                  maxCount={1}
+                                />
+
+                          </div>
+                       </div>
+
+
+                       <div className="flex gap-3 mb-3">
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                                <Label htmlFor="designation">Designation/Role</Label>
+                                {designations && designations.length > 0 && (
+                                  <Select 
+                                      value={formData.designation}
+                                      onValueChange={(value) =>
+                                        setFormData((prev) => ({
+                                          ...prev,
+                                          designation: value,
+                                        }))
+                                      }
+                              >
+                                    <SelectTrigger className="w-full">
+                                      <SelectValue placeholder="Select a designation" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {designations.map((item, idx) => (
+                                        <SelectItem key={idx} value={String(item.id)}>
+                                          {item.name}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                               )}
+                          </div>
+
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                             <Label htmlFor="website_clinic_url">Website or Clinic URL <sup>*</sup></Label>
+                             <Input type="text" id="url" onChange={handleChange} placeholder="Website or Clinic URL" name="website_clinic_url" value={formData.website_clinic_url} />
+                          </div>
+
+                          <div className="grid w-full max-w-sm items-center gap-1.5">
+                             <Label htmlFor="year_establishment">Year of Establishment</Label>
+                             <Select 
+                                  value={formData.year_establishment}
+                                  onValueChange={(value) =>
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      year_establishment: value,
+                                    }))
+                                  }
+                              >
+                                <SelectTrigger className="w-full">
+                                   <SelectValue placeholder="Select Year of Establishment" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {Array.from({ length: 101 }, (_, i) => {
+                                    const year = String(new Date().getFullYear() - i);
+                                    return (
+                                      <SelectItem key={year} value={year}>{year}</SelectItem>
+                                    );
+                                  })}
+                                </SelectContent>
+                             </Select>
+                          </div>
+
+                       </div>
+
+                       <div className="flex gap-3"><Button className="mt-3">Save Changes</Button></div>
 
                     </form>
                  </section>
