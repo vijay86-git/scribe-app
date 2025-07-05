@@ -138,10 +138,10 @@ export default async function Page() {
                            <TabsTrigger value="business">Business</TabsTrigger>
                         </TabsList>
                         <TabsContent value="mandatory">
-                           2
+                           <Basic countries={countries} clinic_detail={clinicDetail} />
                         </TabsContent>
                         <TabsContent value="business">
-                          2
+                          <Optional designations={designations} clinic_detail={clinicDetail} specializations={specializations} />
                         </TabsContent>
                      </Tabs>) 
                     }
