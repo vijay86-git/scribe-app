@@ -1,9 +1,19 @@
 import type { NextConfig } from "next";
 
+const imageDomain = new URL(process.env.NEXT_PUBLIC_IMAGE_DOMAIN || '');
+const parsed = new URL(imageDomain);
+
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    remotePatterns: [new URL('http://127.0.0.1:8001/storage/uploads/**')],
+    remotePatterns: [
+      {
+        protocol: parsed.protocol.replace(':', ''),
+        hostname: parsed.hostname,
+        port: parsed.port || '',
+        pathname: '/storage/uploads/**', // wildcard path
+      },
+    ],
   },
 };
 
