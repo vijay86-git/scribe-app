@@ -106,7 +106,24 @@ export default async function Page() {
         console.error("Failed to fetch metadata:", error);
       }
 
-    
+    //     const response = await res.json();
+    //     if (response.success) {
+    //        const { countries, designations, specializations} = response.data;
+    //        setCountries(countries);
+    //        setDesignations(designations);
+    //        setSpecializations(specializations);
+    //        setLoading(false);
+    //     }
+
+    //     if (response?.form_validation) {
+    //        setErrors(response.form_validation);
+    //     }
+    //  };
+     
+    // useEffect(() => {
+    //     setLoading(true);
+    //     getMetaDataInfo();
+    // }, []);
 
   return (
             <SidebarInset>  
@@ -121,10 +138,10 @@ export default async function Page() {
                            <TabsTrigger value="business">Business</TabsTrigger>
                         </TabsList>
                         <TabsContent value="mandatory">
-                           1
+                          1{/*<Basic countries={countries} clinic_detail={clinicDetail} />*/}
                         </TabsContent>
                         <TabsContent value="business">
-                          <Optional  />
+                          <Optional designations={designations} clinic_detail={clinicDetail} specializations={specializations} />
                         </TabsContent>
                      </Tabs>) 
                     }
