@@ -69,6 +69,8 @@ type ClinicType = {
     ai_filter?: number;
 };
 
+
+
 export default async function Page() {
 
   let countries: MetaCol[] = [];
