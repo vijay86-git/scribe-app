@@ -53,7 +53,7 @@ type ClinicType = {
 };
 
 type Specialization = {
-  value: number;
+  value: string;
   label: string;
 };
 
