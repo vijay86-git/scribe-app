@@ -5,8 +5,7 @@ export const clinicProfileOptionalFormSchema = z.object({
 	  daily_monthly_patient_footfall: z.number().optional(),
 	  designation: z.string().optional(),
 	  website_clinic_url: z.string().optional(),
-	  year_establishment: z.string().optional(),
-	  ai_filter: z.number().optional(),
+	  year_establishment: z.string().optional()
 });
 
 export type ClinicProfileOptionalFormSchema = z.infer<typeof clinicProfileOptionalFormSchema>;
