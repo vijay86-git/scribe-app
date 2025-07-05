@@ -59,6 +59,7 @@ type CType = {
     website_clinic_url?: string;
     year_establishment?: number;
     ai_filter?: number;
+    specializations?: Specialization[]; 
 };
 
 type Specialization = {
