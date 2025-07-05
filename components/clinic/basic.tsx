@@ -48,7 +48,7 @@ import { clinicProfileMandatoryFormSchema } from "@/schemas/clinic-profile-manda
 import { MultiSelect } from "@/components/multi-select";
 
 type MetaCol1 = {
-  id: number;
+  id: string;
   name: string;
 };
 
@@ -81,7 +81,7 @@ import {
 type FormData = z.infer<typeof clinicProfileMandatoryFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
-export default function Basic({countries, clinic_detail}: {countries: MetaCol1[], clinic_detail: ClinicType}) {
+export default function Basic({countries, clinic_detail}: {countries: MetaCol[], clinic_detail: ClinicType}) {
 		
 	  const {clinic_name, country, state, city, street_address, patient_id_prefix, clinic_logo, upload_clinic_logo = null} = clinic_detail;
 
