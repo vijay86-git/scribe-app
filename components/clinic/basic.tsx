@@ -67,7 +67,7 @@ type ClinicType = {
     daily_monthly_patient_footfall?: number;
     designation?: string;
     website_clinic_url?: string;
-    year_establishment?: number;
+    year_establishment?: string;
     ai_filter?: number;
 };
 
