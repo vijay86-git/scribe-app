@@ -42,14 +42,23 @@ type MetaCol = {
 };
 
 
-type CType = {
+type ClinicType = {
+    clinic_name: string;
+    clinic_logo?: string;
+    upload_clinic_logo?: File | null;
+    street_address: string;
+    city: string;
+    state: string;
+    zip_code: number;
+    country: string;
+    gst_no: string;
+    patient_id_prefix: string;
     no_of_doctors?: number;
     daily_monthly_patient_footfall?: number;
-    designation?: number;
+    designation?: string;
     website_clinic_url?: string;
-    year_establishment?: number;
-    ai_filter?: number;
-    specializations?: number[]
+    year_establishment?: string;
+    ai_filter?: string;
 };
 
 type Specialization = {
