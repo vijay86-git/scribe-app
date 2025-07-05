@@ -34,34 +34,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { MultiSelect } from "@/components/multi-select";
-
-type MetaCol = {
-  id: number;
-  name: string;
-};
-
-
-type ClinicType = {
-    no_of_doctors?: number;
-    daily_monthly_patient_footfall?: number;
-    designation?: string;
-    website_clinic_url?: string;
-    year_establishment?: string;
-    ai_filter?: string;
-    specializations?: string[]
-};
-
-type Spec = {
-  value: string;
-  label: string;
-};
-
-import { clinicProfileOptionalFormSchema } from "@/schemas/clinic-profile-optional-schema";
-type FormData = z.infer<typeof clinicProfileOptionalFormSchema>;
-type FormErrors = Partial<Record<keyof FormData, string[]>>;
-
-export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Spec[], clinic_detail: ClinicType}) {
+export default function Optional() {
 
   
 
