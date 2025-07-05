@@ -96,6 +96,7 @@ export default function Optional({designations, specializations, clinic_detail}:
     };
 
   async function handleSubmit(e: React.FormEvent) {
+    /*
       e.preventDefault();
 
       const newErrors = validateForm(formData);
@@ -145,7 +146,7 @@ export default function Optional({designations, specializations, clinic_detail}:
             setServerMessage("Oops! Something went wrong"); // works, `e` narrowed to Error
           }
         }
-      }
+      }*/
     }
 
   return (
