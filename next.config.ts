@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const imageDomain = new URL(process.env.NEXT_PUBLIC_IMAGE_DOMAIN || 'https://api.adgscribe.companydemo.ca');
+const imageDomain = process.env.NEXT_PUBLIC_IMAGE_DOMAIN || 'https://api.adgscribe.companydemo.ca';
 const parsed = new URL(imageDomain);
 
 const nextConfig: NextConfig = {
