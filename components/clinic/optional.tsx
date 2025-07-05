@@ -142,7 +142,7 @@ export default function Optional({designations, specializations, clinic_detail}:
             } 
 
             if (data?.msg?.errors) {
-                setFormErrors(data.msg.errors);
+                //setFormErrors(data.msg.errors);
             }
 
             if (data?.msg?.message) {
