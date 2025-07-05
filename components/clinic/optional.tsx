@@ -42,27 +42,18 @@ type MetaCol = {
 };
 
 
-type CType = {
-    clinic_name: string;
-    clinic_logo?: string;
-    upload_clinic_logo?: File | null;
-    street_address: string;
-    city: string;
-    state: string;
-    zip_code: number;
-    country: string;
-    gst_no: string;
-    patient_id_prefix: string;
+type ClinicType = {
     no_of_doctors?: number;
     daily_monthly_patient_footfall?: number;
     designation?: string;
     website_clinic_url?: string;
     year_establishment?: string;
-    specializations?: Spec[]; 
+    ai_filter?: string;
+    specializations?: number[]
 };
 
-type Spec = {
-  value: string;
+type Specialization = {
+  value: number;
   label: string;
 };
 
@@ -70,14 +61,13 @@ import { clinicProfileOptionalFormSchema } from "@/schemas/clinic-profile-option
 type FormData = z.infer<typeof clinicProfileOptionalFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
-export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Spec[], clinic_detail: CType}) {
+export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Specialization[], clinic_detail: ClinicType}) {
 
-  const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment} = clinic_detail;
+  const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter} = clinic_detail;
 
-  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment});
+  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter});
 
-  const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(clinic_detail.specializations?.map(spec => spec.value) ?? []); 
-  //useState<number[] | (() => number[])>(clinic_detail.specializations ?? []);
+  const [selectedSpecializations, setSelectedSpecializations] = useState<number[] | (() => number[])>(clinic_detail.specializations ?? []);
 
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -141,7 +131,7 @@ export default function Optional({designations, specializations, clinic_detail}:
             } 
 
             if (data?.msg?.errors) {
-                //setFormErrors(data.msg.errors);
+                setFormErrors(data.msg.errors);
             }
 
             if (data?.msg?.message) {
