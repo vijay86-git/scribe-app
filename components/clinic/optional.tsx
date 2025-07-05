@@ -63,37 +63,7 @@ type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
 export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Spec[], clinic_detail: ClinicType}) {
 
-  const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter} = clinic_detail;
-
-  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment});
-
-  //const [selectedSpecializations, setSelectedSpecializations] = useState<string[] | (() => string[])>(clinic_detail.specializations ?? []);
-  const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(clinic_detail.specializations ?? []);
-
-  const [errors, setErrors] = useState<FormErrors>({});
-
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [serverMessage, setServerMessage] = useState<string>("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    };
-
-  const validateForm = (data: FormData): FormErrors => {
-
-      try {
-        clinicProfileOptionalFormSchema.parse(data);
-        return {};
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          return error.flatten().fieldErrors;
-        }
-        return {};
-      }
-    };
+  
 
   async function handleSubmit(e: React.FormEvent) {
     /*
@@ -157,64 +127,7 @@ export default function Optional({designations, specializations, clinic_detail}:
               <CardContent className="grid gap-6">
                  <section className="container">
                   <form onSubmit={handleSubmit} className="border border-gray-100 rounded-lg p-4">
-                      <div className="flex gap-3 mb-6">
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                             <Label htmlFor="no_of_doctors">Number of Doctors</Label>
-                             <Input type="number" min="0" onChange={handleChange} placeholder="Number of Doctors" name="no_of_doctors" value={formData.no_of_doctors} />
-                          </div>
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                             <Label htmlFor="daily_monthly_patient_footfall">Daily/Monthly Patient Footfall</Label>
-                             <Input type="number" id="daily_monthly_patient_footfall" onChange={handleChange} placeholder="Daily/Monthly Patient Footfall" name="daily_monthly_patient_footfall" value={formData.daily_monthly_patient_footfall} />
-                          </div>
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                             <Label htmlFor="clinic_specializations">Clinic Specializations</Label>
-                             
-                                <MultiSelect
-                                  options={specializations}
-                                  onValueChange={setSelectedSpecializations}
-                                  defaultValue={selectedSpecializations}
-                                  placeholder="Select Specializations"
-                                  variant="inverted"
-                                  maxCount={1}
-                                />
-
-                          </div>
-                       </div>
-
-
-                       <div className="flex gap-3 mb-3">
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="designation">Designation/Role</Label>
-                                {designations && designations.length > 0 && (
-                                  <Select 
-                                      value={formData.designation}
-                                      onValueChange={(value) =>
-                                        setFormData((prev) => ({
-                                          ...prev,
-                                          designation: value,
-                                        }))
-                                      }
-                              >
-                                    <SelectTrigger className="w-full">
-                                      <SelectValue placeholder="Select a designation" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                      {designations.map((item, idx) => (
-                                        <SelectItem key={idx} value={String(item.id)}>
-                                          {item.name}
-                                        </SelectItem>
-                                      ))}
-                                    </SelectContent>
-                                  </Select>
-                               )}
-                          </div>
-
-
-
-                       </div>
-
-                       <div className="flex gap-3"><Button className="mt-3">Save Changes</Button></div>
-
+                     
                     </form>
                  </section>
               </CardContent>
