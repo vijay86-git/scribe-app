@@ -169,14 +169,14 @@ export default function Optional({designations, specializations, clinic_detail}:
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                              <Label htmlFor="clinic_specializations">Clinic Specializations</Label>
                              
-                                <MultiSelect
+                                {/*<MultiSelect
                                   options={specializations}
                                   onValueChange={setSelectedSpecializations}
                                   defaultValue={selectedSpecializations}
                                   placeholder="Select Specializations"
                                   variant="inverted"
                                   maxCount={1}
-                                />
+                                />*/}
 
                           </div>
                        </div>
@@ -185,7 +185,28 @@ export default function Optional({designations, specializations, clinic_detail}:
                        <div className="flex gap-3 mb-3">
                           <div className="grid w-full max-w-sm items-center gap-1.5">
                                 <Label htmlFor="designation">Designation/Role</Label>
-
+                                {designations && designations.length > 0 && (
+                                  <Select 
+                                      value={formData.designation}
+                                      onValueChange={(value) =>
+                                        setFormData((prev) => ({
+                                          ...prev,
+                                          designation: value,
+                                        }))
+                                      }
+                              >
+                                    <SelectTrigger className="w-full">
+                                      <SelectValue placeholder="Select a designation" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {designations.map((item, idx) => (
+                                        <SelectItem key={idx} value={String(item.id)}>
+                                          {item.name}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                               )}
                           </div>
 
 
