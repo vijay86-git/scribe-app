@@ -59,10 +59,10 @@ type CType = {
     website_clinic_url?: string;
     year_establishment?: number;
     ai_filter?: number;
-    specializations?: Specialization[]; 
+    specializations?: Spec[]; 
 };
 
-type Specialization = {
+type Spec = {
   value: string;
   label: string;
 };
@@ -71,7 +71,7 @@ import { clinicProfileOptionalFormSchema } from "@/schemas/clinic-profile-option
 type FormData = z.infer<typeof clinicProfileOptionalFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
-export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Specialization[], clinic_detail: CType}) {
+export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Spec[], clinic_detail: CType}) {
 
   const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter} = clinic_detail;
 
