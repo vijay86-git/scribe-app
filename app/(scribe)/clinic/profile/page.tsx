@@ -142,7 +142,7 @@ export default async function Page() {
                            1
                         </TabsContent>
                         <TabsContent value="business">
-                          2
+                          <Optional designations={designations} clinic_detail={clinicDetail} specializations={specializations} />
                         </TabsContent>
                      </Tabs>) 
                     }
