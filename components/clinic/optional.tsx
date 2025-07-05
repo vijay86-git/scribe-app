@@ -55,7 +55,7 @@ type ClinicType = {
     patient_id_prefix: string;
     no_of_doctors?: number;
     daily_monthly_patient_footfall?: number;
-    designation?: string;
+    designation?: number;
     website_clinic_url?: string;
     year_establishment?: string;
     ai_filter?: string;

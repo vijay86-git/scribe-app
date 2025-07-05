@@ -65,8 +65,8 @@ type ClinicType = {
     daily_monthly_patient_footfall?: number;
     designation?: string;
     website_clinic_url?: string;
-    year_establishment?: string;
-    ai_filter?: string;
+    year_establishment?: number;
+    ai_filter?: number;
 };
 
 export default async function Page() {
