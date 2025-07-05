@@ -74,7 +74,7 @@ export default function Optional({designations, specializations, clinic_detail}:
 
   const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment} = clinic_detail;
 
-  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter});
+  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment});
 
   const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(clinic_detail.specializations?.map(spec => spec.value) ?? []); 
   //useState<number[] | (() => number[])>(clinic_detail.specializations ?? []);
