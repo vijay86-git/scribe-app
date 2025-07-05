@@ -68,6 +68,7 @@ type ClinicType = {
     designation?: string;
     website_clinic_url?: string;
     year_establishment?: string;
+    ai_filter?: string;
 };
 
 import {

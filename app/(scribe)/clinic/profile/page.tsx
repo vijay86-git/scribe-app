@@ -39,7 +39,7 @@ type MetaCol = {
 };
 
 type Specialization = {
-  value: string;
+  value: number;
   label: string;
 };
 
@@ -66,9 +66,8 @@ type ClinicType = {
     designation?: string;
     website_clinic_url?: string;
     year_establishment?: string;
+    ai_filter?: string;
 };
-
-
 
 export default async function Page() {
 
@@ -139,10 +138,10 @@ export default async function Page() {
                            <TabsTrigger value="business">Business</TabsTrigger>
                         </TabsList>
                         <TabsContent value="mandatory">
-                           1
+                           <Basic countries={countries} clinic_detail={clinicDetail} />
                         </TabsContent>
                         <TabsContent value="business">
-                          <Optional designations={designations} clinic_detail={clinicDetail} specializations={specializations} />
+                          2
                         </TabsContent>
                      </Tabs>) 
                     }
