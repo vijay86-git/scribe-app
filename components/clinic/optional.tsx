@@ -124,8 +124,6 @@ export default function Optional({designations, specializations, clinic_detail}:
             const data = await res.json();
             setIsSubmitting(false);
 
-            console.log(data, 'data');
-            return;
             if (data.success) {
                 //setUpdateMsg(true);
             } 
