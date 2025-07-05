@@ -177,6 +177,13 @@ export default function Optional({designations, specializations, clinic_detail}:
                                   variant="inverted"
                                   maxCount={1}
                                 />*/}
+                             <MultiSelect
+                                  options={specializations}
+                                  defaultValue={selectedSpecializations}
+                                  placeholder="Select Specializations"
+                                  variant="inverted"
+                                  maxCount={1}
+                                />
 
                           </div>
                        </div>
