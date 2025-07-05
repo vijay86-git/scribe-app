@@ -49,7 +49,7 @@ type ClinicType = {
     website_clinic_url?: string;
     year_establishment?: string;
     ai_filter?: string;
-    specializations?: number[]
+    specializations?: string[]
 };
 
 type Spec = {
