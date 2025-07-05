@@ -179,6 +179,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                                 />*/}
                              <MultiSelect
                                   options={specializations}
+                                  onValueChange={setSelectedSpecializations}
                                   defaultValue={selectedSpecializations}
                                   placeholder="Select Specializations"
                                   variant="inverted"
