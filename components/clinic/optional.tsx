@@ -37,12 +37,12 @@ import {
 import { MultiSelect } from "@/components/multi-select";
 
 type MetaCol = {
-  id: number;
+  id: string;
   name: string;
 };
 
 
-type ClinicType = {
+type CType = {
     no_of_doctors?: number;
     daily_monthly_patient_footfall?: number;
     designation?: string;
@@ -61,9 +61,39 @@ import { clinicProfileOptionalFormSchema } from "@/schemas/clinic-profile-option
 type FormData = z.infer<typeof clinicProfileOptionalFormSchema>;
 type FormErrors = Partial<Record<keyof FormData, string[]>>;
 
-export default function Optional() {
+export default function Optional({designations, specializations, clinic_detail}: {designations: MetaCol[], specializations: Spec[], clinic_detail: CType}) {
 
-  
+  const {no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment, ai_filter} = clinic_detail;
+
+  const [formData, setFormData] = useState<FormData>({no_of_doctors, daily_monthly_patient_footfall, designation, website_clinic_url, year_establishment});
+
+  //const [selectedSpecializations, setSelectedSpecializations] = useState<string[] | (() => string[])>(clinic_detail.specializations ?? []);
+  const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(clinic_detail.specializations ?? []);
+
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [serverMessage, setServerMessage] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    };
+
+  const validateForm = (data: FormData): FormErrors => {
+
+      try {
+        clinicProfileOptionalFormSchema.parse(data);
+        return {};
+      } catch (error) {
+        if (error instanceof z.ZodError) {
+          return error.flatten().fieldErrors;
+        }
+        return {};
+      }
+    };
 
   async function handleSubmit(e: React.FormEvent) {
     /*

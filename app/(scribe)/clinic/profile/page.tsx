@@ -34,7 +34,7 @@ import { apiFetch } from '@/lib/api';
 import { apiRoutes } from '@/lib/apiRoutes';
 
 type MetaCol = {
-  id: number;
+  id: string;
   name: string;
 };
 
