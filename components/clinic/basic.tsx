@@ -307,7 +307,7 @@ export default function Basic({countries, clinic_detail}: {countries: MetaCol1[]
 	                             <Label htmlFor="clinic_logo">Clinic Logo<sup>*</sup></Label>
 	                             <Input id="image" type="file" name="upload_clinic_logo" accept="image/*" onChange={handleImageChange} />
 
-	                             {clinic_logo && (<Image alt="" width={120} height={0} layout="intrinsic" src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${clinic_logo}`}  />)}
+	                             {clinic_logo && (<Image alt="" width={120} height={0} layout="intrinsic" src={`${process.env.NEXT_PUBLIC_IMAGE_DOMAIN}${clinic_logo}`}  />)}
 
 	                             { errors.upload_clinic_logo && (
 						                  	   <p className="text-red-500 text-xs">{errors.upload_clinic_logo[0]}</p>
