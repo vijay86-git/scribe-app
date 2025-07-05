@@ -209,35 +209,7 @@ export default function Optional({designations, specializations, clinic_detail}:
                                )}
                           </div>
 
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                             <Label htmlFor="website_clinic_url">Website or Clinic URL <sup>*</sup></Label>
-                             <Input type="text" id="url" onChange={handleChange} placeholder="Website or Clinic URL" name="website_clinic_url" value={formData.website_clinic_url} />
-                          </div>
 
-                          <div className="grid w-full max-w-sm items-center gap-1.5">
-                             <Label htmlFor="year_establishment">Year of Establishment</Label>
-                             <Select 
-                                  value={formData.year_establishment}
-                                  onValueChange={(value) =>
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      year_establishment: value,
-                                    }))
-                                  }
-                              >
-                                <SelectTrigger className="w-full">
-                                   <SelectValue placeholder="Select Year of Establishment" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {Array.from({ length: 101 }, (_, i) => {
-                                    const year = String(new Date().getFullYear() - i);
-                                    return (
-                                      <SelectItem key={year} value={year}>{year}</SelectItem>
-                                    );
-                                  })}
-                                </SelectContent>
-                             </Select>
-                          </div>
 
                        </div>
 
