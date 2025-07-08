@@ -4,6 +4,7 @@ import { apiFetch } from '@/lib/api';
 import { apiRoutes } from '@/lib/apiRoutes';
 import { createSession } from '@/lib/session'
 
+
 export async function GET(req: Request) {
         try {
                 const resp: Response = await apiFetch(apiRoutes.clinicDetails, {
